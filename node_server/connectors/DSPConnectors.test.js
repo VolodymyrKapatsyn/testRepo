@@ -1,4 +1,4 @@
-//DSPConnectors.js unit test
+//DSPConnectors.js unit testing
 const path = require('path');
 
 jest.mock(require.resolve(__dirname, '../configs/config.json'), () => ({
