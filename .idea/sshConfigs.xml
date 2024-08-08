@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SshConfigs">
+    <configs>
+      <sshConfig host="192.168.100.2" id="692fcaa7-5862-46b1-b880-d6aa26caa3aa" keyPath="C:\Users\XXX\.ssh\maksym" port="22" nameFormat="DESCRIPTIVE" username="max" useOpenSSHConfig="true" />
+    </configs>
+  </component>
+</project>

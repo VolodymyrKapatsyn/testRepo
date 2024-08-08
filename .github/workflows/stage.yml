@@ -1,0 +1,29 @@
+name: Stage env
+
+on:
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  deploy_stage:
+    name: 'Deploy stage'
+    runs-on: node_stage
+    steps:
+      - uses: actions/checkout@v2
+      - run: echo "Start update"
+
+      - name: Stop pm2
+        run: |
+          cd /nodejs/ad_ex/node_server
+          sudo pm2 stop server
+
+      - name: Git pull
+        run: cd /nodejs/ad_ex/node_server && git pull
+
+      - name: Start pm2
+        run: |
+          cd /nodejs/ad_ex/node_server
+          sudo pm2 start server.js

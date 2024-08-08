@@ -1,0 +1,37 @@
+name: X env
+
+on:
+  workflow_dispatch:
+    inputs:
+      node:
+        description: 'Select on which node to deploy '
+        required: true
+        type: choice
+        options:
+          - node_224_51_x1
+          - node_225_52_x1
+          - node_226_53_x1
+          - node_228_61_x2
+          - node_229_62_x2
+          - node_230_63_x2
+          - node_232_71_x3
+          - node_233_72_x3
+          - node_234_73_x3
+          - node_236_81_x4
+          - node_237_82_x4
+          - node_238_83_x4
+          - all_node_x1
+          - all_node_x2
+          - all_node_x3
+          - all_node_x4
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  deploy_prod:
+    uses: Luna-Media-Group/actions/.github/workflows/deploy_node_x.yml@main
+    with:
+      runner_label: ${{ github.event.inputs.node }}
+      repo: ${{ github.repository }}

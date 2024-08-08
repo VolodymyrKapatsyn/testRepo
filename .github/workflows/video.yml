@@ -1,0 +1,26 @@
+name: Video env
+
+on:
+  workflow_dispatch:
+    inputs:
+      node:
+        description: 'Select on which node to deploy '
+        required: true
+        type: choice
+        options:
+          - node_video_202_41
+          - node_video_203_42
+          - node_video_204_43
+          - node_video_205_44
+          - all_node_video
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  deploy_prod:
+    uses: Luna-Media-Group/actions/.github/workflows/deploy_node_video.yml@main
+    with:
+      runner_label: ${{ github.event.inputs.node }}
+      repo: ${{ github.repository }}

@@ -1,0 +1,37 @@
+name: Prod env
+
+on:
+  workflow_dispatch:
+    inputs:
+      node:
+        description: 'Select on which node to deploy '
+        required: true
+        type: choice
+        options:
+          - node_1
+          - node_2
+          - node_3
+          - node_4
+          - node_5
+          - node 6
+          - node_7
+          - node_8
+          - node_9
+          - node_10
+          - node_11
+          - node_12
+          - node_13
+          - node_14
+          - node_15
+          - all_node
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  deploy_prod:
+    uses: Luna-Media-Group/actions/.github/workflows/deploy_node.yml@main
+    with:
+      runner_label: ${{ github.event.inputs.node }}
+      repo: ${{ github.repository }}
